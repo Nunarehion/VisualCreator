@@ -15,12 +15,15 @@ def browse_file(photo_path_entry):
     update_preview()
 
 
-def update_preview():
-    photo = Image.open(buff.photo_path_entry.get())
-    image = Image.new('RGB', (400, 400), '#000000')
-    image.paste(photo, (0, 0))
-
+def update_preview(x=0, y=0, opacity=255):
+    photo = Image.open(buff.photo_path_entry.get()).convert('RGBA')
+    image = Image.new('RGBA', (400, 400), '#000000')
+    image.putalpha(opacity)
+    image.paste(photo, (x, y))
     update_preview_image(image)
+    buff.img_x = x
+    buff.img_y = y
+    buff.opacity = opacity
 
 
 def update_preview_image(image):

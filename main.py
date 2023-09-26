@@ -6,6 +6,7 @@ from _import import *
 # запуск основого приложения
 
 root = tk.Tk()
+root["bg"] = color.main.black
 root.title("VisualCreator")
 
 # Устанавливаем размер окна по умолчанию

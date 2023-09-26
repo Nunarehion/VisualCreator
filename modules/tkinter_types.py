@@ -2,19 +2,16 @@
 from _import import *
 from .commands import *
 
-
-#preview_label_ok = tk.Label()
-
 def entry_image(root):
-    entry_photo_frame = tk.Frame(root, bg="#E9E9EB")
-    photo_path_entry = ttk.Combobox(entry_photo_frame)
-    browse_button = ttk.Button(entry_photo_frame, text="картинка", command=lambda: browse_file(photo_path_entry))
+    entry_photo_frame = tk.Frame(root, bg=color.main.black)
+    buff.photo_path_entry = ttk.Combobox(entry_photo_frame)
+    browse_button = tk.Button(entry_photo_frame, text="картинка", command=lambda: browse_file(buff.photo_path_entry),**style.button.tools_image_control)
 
-    photo_path_entry.pack(side='right')
-    browse_button.pack(padx=5, pady=5)
+    buff.photo_path_entry.pack(side='right')
+    browse_button.pack(padx=5, pady=15)
     entry_photo_frame.pack()
 
-    buff.photo_path_entry = photo_path_entry
+
 
 
 def image_label_move(x, y):
@@ -29,15 +26,14 @@ def image_opacity_change(val):
 
 
 def image_control(root):
-    button_style = ttk.Style()
-    button_style.configure('TButton', fieldbackground='#43506c', borderwidth='0', background="#43506c")
-    control_panel = tk.Frame(root, bg="#E9E9EB", bd='10')
-    up_button = ttk.Button(control_panel, text='↑', command=lambda: image_label_move(0, -1))
-    down_button = ttk.Button(control_panel, text='↓', command=lambda: image_label_move(0, 1))
-    left_button = ttk.Button(control_panel, text='←', command=lambda: image_label_move(-1, 0))
-    right_button = ttk.Button(control_panel, text='→', command=lambda: image_label_move(1, 0))
-    opacity_plus = ttk.Button(control_panel, text='+', command=lambda: image_opacity_change(1))
-    opacity_minus = ttk.Button(control_panel, text='-', command=lambda: image_opacity_change(-1))
+    control_panel = tk.Frame(root, bg=color.main.black, bd='10')
+    up_button     = tk.Button(control_panel, text='↑', command=lambda: image_label_move(0, -10), **style.button.tools_image_control)
+    down_button   = tk.Button(control_panel, text='↓', command=lambda: image_label_move(0, 10),   **style.button.tools_image_control)
+    left_button   = tk.Button(control_panel, text='←', command=lambda: image_label_move(-10, 0),  **style.button.tools_image_control)
+    right_button  = tk.Button(control_panel, text='→', command=lambda: image_label_move(10, 0),**style.button.tools_image_control)
+    opacity_plus  = tk.Button(control_panel, text='+', command=lambda: image_opacity_change(1),  **style.button.tools_image_control)
+    opacity_minus = tk.Button(control_panel, text='-', command=lambda: image_opacity_change(-1), **style.button.tools_image_control)
+
     up_button.pack(side='top')
     down_button.pack(side='bottom')
     opacity_plus.pack(side='right', padx=15)
@@ -48,6 +44,8 @@ def image_control(root):
 
 
 def main(root):
+    #print(tk.font.families(root))
+    #add_fonts.loadfonts()
     entry_image(root)
     image_control(root)
     create_preview_label(root).pack()

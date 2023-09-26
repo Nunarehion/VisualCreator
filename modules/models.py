@@ -11,7 +11,7 @@ class FooImage(): # Класс для работы с изображениями
             x=0,
             y=0,
             scale = 1,
-            opacity = 1,
+            _opacity = 1,
         )
         buff.image_list.append(self)
 
@@ -19,7 +19,7 @@ class FooImage(): # Класс для работы с изображениями
         self.__dict__.update(kwargs) # update the dict with the new Atributes
     def opacity(self, value=1):
         self.image.putalpha(int(value*255))
-        return self.image
+        return self
     def zoom(self):
         return self.image.resize((int(self.scale * self.image.width),
                                   int(self.scale * self.image.height)))

@@ -1,31 +1,30 @@
 from _import import *
 
-buff = adict()
-
 
 def create_preview_label(root):
-    buff.preview_label = tk.Label(root, bg="Red")
+    buff.preview_label = tk.Label(root, bg=color.main.black)
     return buff.preview_label
 
 
 def browse_file(photo_path_entry):
     file_path = filedialog.askopenfilename(filetypes=[("Image Files", "*.jpg *.png *.jpeg *.gif *.bmp")])
-    buff.photo_path_entry.delete(0, tk.END)
-    buff.photo_path_entry.insert(0, file_path)
+    buff.photo_path_entry['values'] = (*buff.photo_path_entry['values'], FooImage(file_path).name)
+    buff.photo_path_entry.current(len(buff.photo_path_entry['values']) - 1)
+
     update_preview()
 
 
 def update_preview(x=0, y=0, opacity=255):
-    photo = Image.open(buff.photo_path_entry.get()).convert('RGBA')
+    #photo = Image.open(FooImage.get().path).convert('RGBA')
     image = Image.new('RGBA', (400, 400), '#000000')
     image.putalpha(opacity)
-    image.paste(photo, (x, y))
+    for foo in buff.image_list:
+        photo = foo.image
+        image.paste(photo, (foo.x, foo.y),photo)
     update_preview_image(image)
     buff.img_x = x
     buff.img_y = y
     buff.opacity = opacity
-
-
 def update_preview_image(image):
     buff.preview_image = image
     img = ImageTk.PhotoImage(image)

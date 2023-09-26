@@ -17,14 +17,11 @@ def browse_file(photo_path_entry):
 def update_preview(x=0, y=0, opacity=255):
     #photo = Image.open(FooImage.get().path).convert('RGBA')
     image = Image.new('RGBA', (400, 400), '#000000')
-    image.putalpha(opacity)
     for foo in buff.image_list:
-        photo = foo.image
+        photo = foo.opacity(0.5).image
         image.paste(photo, (foo.x, foo.y),photo)
     update_preview_image(image)
-    buff.img_x = x
-    buff.img_y = y
-    buff.opacity = opacity
+
 def update_preview_image(image):
     buff.preview_image = image
     img = ImageTk.PhotoImage(image)

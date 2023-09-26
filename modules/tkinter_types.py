@@ -3,8 +3,9 @@ from _import import *
 from .commands import *
 
 def entry_image(root):
+    '''создание комбобокса для выбора картинок'''
     entry_photo_frame = tk.Frame(root, bg=color.main.black)
-    buff.photo_path_entry = ttk.Combobox(entry_photo_frame)
+    buff.photo_path_entry = ttk.Combobox(entry_photo_frame) #буферизация комбобокса
     browse_button = tk.Button(entry_photo_frame, text="картинка", command=lambda: browse_file(buff.photo_path_entry),**style.button.tools_image_control)
 
     buff.photo_path_entry.pack(side='right')
@@ -13,19 +14,20 @@ def entry_image(root):
 
 
 
-
+#[Comments]:: Переделать функцию. Функция не должна ничего принимать. Функция должна менять значения текущей картинки из буфера
 def image_label_move(x, y):
     buff.new_img_x = buff.img_x + x
     buff.new_img_y = buff.img_y + y
     update_preview(buff.new_img_x, buff.new_img_y)
 
-
+#[Comments]:: Переделать. Опасити должно менятся у выбранной кароинки из буфера.
 def image_opacity_change(val):
     buff.new_opacity = buff.opacity + val
-    update_preview(buff.new_img_x, buff.new_img_y, buff.new_opacity)
+    update_preview(buff.new_img_x, buff.new_img_y, buff.new_opacity) #[...]:: удалить аргументы
 
-
+#[Comments]:: Переименовать. Имя должно содержать tools и frame. Прописать ретурн. Вернуть фрейм.
 def image_control(root):
+    '''Блок отвечающий за панель управления текущей картинки'''
     control_panel = tk.Frame(root, bg=color.main.black, bd='10')
     up_button     = tk.Button(control_panel, text='↑', command=lambda: image_label_move(0, -10), **style.button.tools_image_control)
     down_button   = tk.Button(control_panel, text='↓', command=lambda: image_label_move(0, 10),   **style.button.tools_image_control)
@@ -44,9 +46,10 @@ def image_control(root):
 
 
 def main(root):
+    '''Основная функция отображения элементов'''
     #print(tk.font.families(root))
     #add_fonts.loadfonts()
-    entry_image(root)
-    image_control(root)
-    create_preview_label(root).pack()
-    update_preview_image(Image.new('RGB', (400, 400), '#000000'))
+    entry_image(root) # выбор картинки
+    image_control(root) #[метка]// контрольный блок для управления картинкой
+    create_preview_label(root).pack() # окно просмотра
+    update_preview_image(Image.new('RGB', (400, 400), '#000000')) # для отображения картинки при первом запуске

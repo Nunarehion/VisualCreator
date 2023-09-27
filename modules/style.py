@@ -44,7 +44,7 @@ color.social = adict(
   #black
   bihance   = '#131418',
   #yellow
-  snapchat  = '#FFFC00
+  snapchat  = '#FFFC00'
   )
 color.castom = adict(
   black = adict(
@@ -201,7 +201,7 @@ color.scheme = adict(
                     b = '#88BEF5',
                     g = '#57C58D',
                     f = '#1C1C1C',
-                    e = '#AAAAAA')
+                    e = '#AAAAAA'),
   mysticism = adict(r = '#FC85AE',
                     v = '#9E579D',
                     p = '#FF1493',

@@ -49,7 +49,9 @@ color.social = adict(
 color.castom = adict(
   black = adict(
     a = '#000000',
-    a001 = '#131418'
+    a001 = '#131418',
+    a002 = '#1C1C1C',
+    a003 = '#1D1D1D'
   ),
   mblack = adict(
     a001 = '#34495E',
@@ -64,7 +66,8 @@ color.castom = adict(
     a002 = '#263238',
     a003 = '#37474F',
     a004 = '#4A5459',
-    a005 = '#515C6B'
+    a005 = '#515C6B',
+    a007 = '#313131'
   ),
   gray = adict(
     a300 = '#90A4AE',
@@ -185,9 +188,32 @@ color.castom = adict(
     o50 = '#EDE7F6',
     p50 = '#F3E5F5',
     q50 = '#FCE4EC',
-    r50 = '#FFEBEE'
+    r50 = '#FFEBEE',
+    a01 = '#F5F5F5',
+    a02 = '#EDEDED'
   )
 )
+color.scheme = adict(
+  bubblegam = adict(y = '#F4FA9C',
+                    r = '#F469A9',
+                    v = '#BA53DE',
+                    b = '#88BEF5',
+                    g = '#57C58D',
+                    f = '#1C1C1C',
+                    e = '#AAAAAA')
+  mysticism = adict(r = '#FC85AE',
+                    v = '#9E579D',
+                    p = '#FF1493',
+                    b = '#574B90',
+                    lb= '#6495ED',
+                    f = '#1D1D1D',
+                    mf ='#303A52',
+                    o = '#FF4500',
+                    y = '#FFD700',
+                    w = '#EDEDED'))
+                 
+
+
     
     
     
